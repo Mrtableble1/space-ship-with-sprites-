@@ -1,0 +1,45 @@
+import pygame
+import random
+
+HEIGHT = 800
+WIDTH = 800
+
+TITLE = "spaceship"
+
+screen = pygame.display.set_mode((HEIGHT,WIDTH))
+pygame.display.set_caption(TITLE)
+
+run = 1
+
+bg = pygame.image.load("image/coolspace.png")
+bg = pygame.transform.scale(bg,(800,800))
+
+spaceship = pygame.image.load("image/rocket.png")
+
+class Spaceship(pygame.sprite.Sprite):
+    def __init__(self,s,y,x):
+        super().__init__()
+        self.image = s
+        self.rect = self.image.get_rect()
+        self.rect.y = y
+        self.rect.x = x
+
+rocket = Spaceship(spaceship,400,400) 
+
+The_sprites = pygame.sprite.Group()
+The_sprites.add(rocket)
+
+
+while run == 1:
+
+    screen.blit(bg,(0,0))
+    The_sprites.draw(screen)
+
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            run = 0
+
+
+
+
+    pygame.display.update()
