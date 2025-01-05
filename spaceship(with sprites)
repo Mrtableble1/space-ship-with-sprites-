@@ -11,6 +11,9 @@ pygame.display.set_caption(TITLE)
 
 run = 1
 
+y = 400
+x = 400
+
 bg = pygame.image.load("image/coolspace.png")
 bg = pygame.transform.scale(bg,(800,800))
 
@@ -38,6 +41,33 @@ while run == 1:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             run = 0
+
+    keyspressed = pygame.key.get_pressed()
+
+    if keyspressed[pygame.K_w]:
+       rocket.rect.y -= 3
+
+    if keyspressed[pygame.K_a]:
+        rocket.rect.x -= 3
+
+    if keyspressed[pygame.K_s]:
+        rocket.rect.y += 3
+    
+    if keyspressed[pygame.K_d]:
+        rocket.rect.x += 3
+
+
+    if rocket.rect.y < 0:
+        rocket.rect.y = 0
+
+    if rocket.rect.y > 750:
+        rocket.rect.y = 750
+
+    if rocket.rect.x < 0:
+        rocket.rect.x = 0
+
+    if rocket.rect.x > 750:
+        rocket.rect.x = 750
 
 
 
